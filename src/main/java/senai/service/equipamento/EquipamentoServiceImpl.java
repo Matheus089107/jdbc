@@ -1,14 +1,17 @@
 package senai.service.equipamento;
 
 import senai.model.Equipamento;
+import senai.repository.EquipamentoRepository;
 
 import java.sql.SQLException;
 import java.util.List;
 
 public class EquipamentoServiceImpl implements EquipamentoService{
+
+    EquipamentoRepository repository = new EquipamentoRepository();
     @Override
     public Equipamento criarEquipamento(Equipamento equipamento) throws SQLException {
-        return null;
+        return repository.cadastrar(equipamento);
     }
 
     @Override

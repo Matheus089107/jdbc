@@ -5,9 +5,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Conexao {
-    private static final String URL = "jdbc:mysql://localhost:3306/provami77?useSSL=false&serverTimezone=UTC";
-    private static final String USER = "root";
-    private static final String PW = "mysqlPW";
+    // Adicionando o modo de compatibilidade com MySQL
+    private static final String URL = "jdbc:h2:mem:provami77;DB_CLOSE_DELAY=-1;MODE=MySQL";
+    private static final String USER = "sa";
+    private static final String PW = "";
 
     public static Connection conectar() throws SQLException {
         return DriverManager.getConnection(URL, USER, PW);

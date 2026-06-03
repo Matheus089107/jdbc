@@ -17,21 +17,34 @@ public class FornecedorServiceImpl implements FornecedorService{
 
     @Override
     public Fornecedor buscarPorId(int id) throws SQLException {
-        return null;
+        Fornecedor fornecedor = repository.buscarPorId(id);
+        if(fornecedor == null){
+            throw new RuntimeException("Id do Fornecedor não encontrado!");
+        }
+        return fornecedor;
     }
 
     @Override
     public List<Fornecedor> buscarTodos() throws SQLException {
-        return List.of();
+        return repository.listarTodos();
     }
 
     @Override
     public void atualizarFornecedor(Fornecedor fornecedor) throws SQLException {
+       Fornecedor fornecedor2 = repository.buscarPorId(fornecedor.getId());
 
+        if(fornecedor2 == null){
+            throw new RuntimeException("Id do fornecedor não encontrado!");
+        }
+        repository.updateFornecedor(fornecedor);
     }
 
     @Override
     public void deletarFornecedor(int id) throws SQLException {
-
+        Fornecedor fornecedor = repository.buscarPorId(id);
+        if(fornecedor == null){
+            throw new RuntimeException("Id do Fornecedor não encontrado!");
+        }
+        repository.dltFornecedor(id);
     }
 }
